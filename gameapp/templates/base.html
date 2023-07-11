@@ -1,0 +1,91 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+  </head>
+  <body>
+    <div id="myDIV">
+      <h1>Welcome to the game: Rock, Paper, Scissors!</h1>
+    <style>
+      body {
+        font-family: 'Courier New', monospace;
+        display: flex;
+        justify-content: center;
+        align-items: top center;
+        height: 100vh;
+        margin: 0;
+        background-color: #faf0e6;}
+      #myDIV {
+        width: 600px;
+        height: 300px;
+        background-color: lightgreen;
+        border-block-style: solid;
+        border-block-width: 10px;
+        animation: mymove 5s infinite;
+      }
+      /* Styles for Play */
+      #myDIV1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;}
+      #myDIV1 input[type="submit"] {
+        align-self: center;}
+
+      @keyframes mymove {
+        50% {border-block-color: pink;}
+      }
+      h1 {
+        color: blue;
+        text-align: center;
+      }
+      p {
+        font-family: verdana;
+        font-size: 20px;
+      }
+      /* Styles for date */
+      #para1 {
+        text-align: center;
+        color: brown;
+      } 
+
+      input:read-only {
+        background-color: yellow; font-size: 40px;
+      }
+      label {
+        color: white;
+        padding: 30px;font-size: 30px;
+        font-family: verdana;
+  
+      }
+      option {
+        background-color: #66ffff;
+        font-weight: bold;
+        font-size: 16px;
+        font-family: verdana;
+      }
+    </style>
+    
+    <form action="{% url 'home' %}" method="post">
+      {% csrf_token %}
+      <label for="move" >Choose your move:</label>
+      <select id="move" name="player_choice">
+        <option value="rock">Rock</option>
+        <option value="paper">Paper</option>
+        <option value="scissors">Scissors</option>
+      </select>
+      <input
+        type="hidden"
+        name="computer_choice"
+        value="{{ computer_choice }}"
+        readonly
+      />
+      <br /><br />
+      <div id="myDiv1">
+      <input type="submit" value="Play" />
+      </div>
+    </form>
+    <p id="para1">Date Played: {{ date_joined }}</p>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock, Paper, Scissors</title>
+  </head>
+  <body>
+    <div id="myDIV">
+      <h2 style="color: #33334d; background: #ffff99; text-align: center">
+        AND WHO IS THE WINNER:
+      </h2>
+    <style>
+      body {
+        font-family: 'Courier New', monospace;
+        display: flex;
+        justify-content: center;
+        align-items: top center;
+        height: 100vh;
+        margin: 0;
+        background-color: #faf0e6;}
+      #myDIV {
+        width: 600px;
+        height: 300px;
+        background-color: lightbeige;
+        border-block-style: solid;
+        border-block-width: 10px;
+        animation: mymove 5s infinite;
+      
+      }
+      
+      @keyframes mymove {
+        50% {border-block-color: pink;}
+      }
+      
+      a {
+        color: green;
+      }
+      h1 {
+        color: blue;
+        text-align: center;
+      }
+      p {
+        font-family: verdana;
+        font-size: 20px;
+      }
+      #para1 {
+        font-size: 30px;
+        text-align: center;
+        margin-top: 20px;
+        color: #333;
+      }
+      .highlight {
+        color: #ff5c33;
+        font-weight: bold;
+      }
+      /* Styles for winner */
+.winner {
+  color: #ff6699;
+  font-size: 24px;
+  animation: winner-animation 2s infinite;
+  text-align: center;
+}
+
+/* Styles for loser */
+.loser {
+  color: red;
+  font-size: 24px;
+  animation: loser-animation 2s infinite;
+  text-align: center;
+}
+.draw { text-align: center;
+  color: #9999ff;  font-size: 30px;}
+
+/* Animation for winner */
+@keyframes winner-animation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Animation for loser */
+@keyframes loser-animation {
+  0% { transform: rotate(0); }
+  50% { transform: rotate(360deg); }
+  100% { transform: rotate(0); }
+}
+a {
+  display: flex;
+  justify-content: center;
+  height: 100px; 
+  font-family: verdana;
+  font-size: 30px;
+
+}
+
+    </style>
+    
+    <p id="para1">
+      You chose: <span class="highlight">{{ player_choice }}</span> and the Computer chose:<span class="highlight"> {{ computer_choice }}</span>
+    </p>
+    <p id="result" class="{% if result == 'You are the winner!' %}winner{% elif result == 'You lost :(' %}loser{% else %}draw{% endif %}">
+      {{ result }}
+    </p>
+    
+    </p>
+    <p><a href="{% url 'home' %}">Play again</a></p>
+  </body>
+</html>
