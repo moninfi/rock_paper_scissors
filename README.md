@@ -1,2 +1,2 @@
 # rock_paper_scissors
-Game
+This is my first project !
